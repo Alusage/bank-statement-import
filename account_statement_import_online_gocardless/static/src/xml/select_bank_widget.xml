@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
     <t
         t-name="account_statement_import_online_gocardless.OnlineSyncSearchBankGoCardless"
@@ -38,9 +39,9 @@
                             </div>
                             <br />
                             <input
-                                placeholder="Search..."
-                                class="institution-search-input"
                                 id="bank_search_input"
+                                class="institution-search-input"
+                                placeholder="Search..."
                                 autofocus="true"
                                 t-on-keydown="onInstitutionSearch"
                             />
