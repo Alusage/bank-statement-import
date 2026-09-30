@@ -39,7 +39,7 @@ class OnlineBankStatementProvider(models.Model):
     )
     currency_id = fields.Many2one(related="journal_id.currency_id")
     account_number = fields.Char(
-        related="journal_id.bank_account_id.sanitized_acc_number"
+        related="journal_id.bank_account_id.sanitized_account_number"
     )
     tz = fields.Selection(
         selection=_tz_get,
