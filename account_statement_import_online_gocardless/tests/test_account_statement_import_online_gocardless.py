@@ -23,7 +23,7 @@ class TestAccountBankAccountStatementImportOnlineGocardless(common.TransactionCa
         cls.currency_eur.write({"active": True})
         bank_account = cls.env["res.partner.bank"].create(
             {
-                "acc_number": "NL77ABNA0574908765",
+                "account_number": "NL77ABNA0574908765",
                 "partner_id": cls.env.ref("base.main_partner").id,
                 "company_id": cls.env.ref("base.main_company").id,
                 "bank_id": cls.env.ref("base.res_bank_1").id,

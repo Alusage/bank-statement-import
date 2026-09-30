@@ -203,7 +203,7 @@ class OnlineBankStatementProvider(models.Model):
     def action_check_gocardless_agreement(self):
         self.ensure_one()
         self.gocardless_requisition_ref = str(uuid4())
-        base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
+        base_url = self.env["ir.config_parameter"].sudo().get_str("web.base.url")
         redirect_url = url_join(base_url, "gocardless/response")
         _response, data = self._gocardless_request(
             "requisitions",
@@ -258,7 +258,7 @@ class OnlineBankStatementProvider(models.Model):
             if account_data:
                 accounts_iban.append(account_data["iban"])
                 if (
-                    self.journal_id.bank_account_id.sanitized_acc_number
+                    self.journal_id.bank_account_id.sanitized_account_number
                     == account_data["iban"].upper()
                 ):
                     found_account = True
@@ -336,7 +336,7 @@ class OnlineBankStatementProvider(models.Model):
                 )
             )
             return [], {}
-        own_acc_number = self.journal_id.bank_account_id.sanitized_acc_number
+        own_acc_number = self.journal_id.bank_account_id.sanitized_account_number
         transactions = self._gocardless_request_transactions(date_since, date_until)
         res = []
         sequence = 0
